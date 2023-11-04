@@ -1,0 +1,24 @@
+.homepage-container {
+    position: relative;
+    text-align: center;
+    height: 65vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .centered-content {
+    text-align: center;
+  }
+  
+  .image-container {
+    position: relative;
+  }
+  
+  .apple-image {
+    max-width: 500px;
+    width: auto;
+    height: auto;
+  }
+

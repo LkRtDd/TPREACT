@@ -1,6 +1,9 @@
 .App {
   text-align: center;
+  padding-bottom: 60px;
+  background-color: rgb(179, 179, 180);
 }
+
 
 .App-header {
   background-color: #282c34;
@@ -17,17 +20,22 @@ body {
   padding: 0; 
 }
 
-.NavBarCss button:focus {
-  outline: transparent;
+.NavBarCss a {
+  text-decoration: none;
+  color: inherit; 
+}
+
+.NavBarCss a:focus,
+.NavBarCss a:active {
+  outline: none; 
 }
 
 .NavBarCss {
-  background-color: rgb(202, 221, 220);
-  padding: 10px;
+  background-color: #333;
+  padding: 7px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 20px solid rgb(255, 255, 255);
 }
 
 h1 {
@@ -45,10 +53,63 @@ h1 {
 }
 
 .NavBarCss button {
-  background: rgb(19, 19, 29);
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  margin-right: 10px;
+  background-color: #444; 
+  color: white; 
+  border: none; 
+  padding: 8px 16px; 
+  margin: 5px;
   
 }
+.NavBarCss button:hover {
+  background-color: #666;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  z-index: 100;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding: 0; 
+  margin: 0; 
+}
+
+.footer ul li {
+  display: inline; 
+  margin-right: 20px;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  background-color: rgb(179, 179, 180)
+}
+
+.footer a {
+  text-decoration: none; 
+  color: white; 
+}
+
+.footer a:focus,
+.footer a:active {
+  outline: none; 
+}
+
+.footer button {
+  background-color: #444; 
+  color: white; 
+  border: none; 
+  padding: 8px 16px; 
+  margin: 5px; 
+}
+
+.footer button:hover {
+  background-color: #666;
+}
+
