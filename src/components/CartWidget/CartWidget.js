@@ -1,11 +1,15 @@
-import carrtt from '../assets/carrodc2.svg'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import carrtt from '../assets/carrodc2.svg';
 
 const CartWidget = () => {
     return (
         <div>
-           <img src={carrtt} alt="cart-widget"/>
+            <Link to="/carrito"> 
+                <img src={carrtt} alt="cart-widget"/>
+            </Link>
         </div>
-    )
-}
+    );
+};
 
-export default CartWidget
+export default CartWidget;

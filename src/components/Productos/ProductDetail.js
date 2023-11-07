@@ -2,23 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { db } from '../config/firebase';
 import { doc, getDoc } from "firebase/firestore";
-import '../Productos/ProductDetail.css'
+import '../Productos/ProductDetail.css';
+import { useCart } from '../CartWidget/CartContext';
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const [product, setProducto] = useState(null);
+  const [product, setProduct] = useState(null);
+  const { dispatch } = useCart();
 
   useEffect(() => {
-    const loadProductoFromFirebase = async () => {
-      const productoDoc = doc(db, 'ProductosFire', id);
-      const productoSnapshot = await getDoc(productoDoc);
-      if(productoSnapshot.exists){
-        setProducto({ ...productoSnapshot.data(), id: productoSnapshot.id});
+    const loadProductFromFirebase = async () => {
+      const productDoc = doc(db, 'ProductosFire', id);
+      const productSnapshot = await getDoc(productDoc);
+      if (productSnapshot.exists()) {
+        setProduct({ ...productSnapshot.data(), id: productSnapshot.id });
       }
     };
 
-    loadProductoFromFirebase();
+    loadProductFromFirebase();
   }, [id]);
+
+  const addToCart = () => {
+    if (product) {
+      dispatch({ type: 'ADD_TO_CART', payload: product });
+      alert('Producto agregado al carro de compras');
+    }
+  };
 
   if (!product) {
     return <div>No se encontró el producto.</div>;
@@ -29,10 +38,10 @@ const ProductDetail = () => {
       <h2>{product.nombre}</h2>
       <img src={product.imagenURL} alt={product.nombre} />
       <p>{product.descripcion}</p>
-      <p>Precio: $USD{product.precio}</p>
+      <p>Precio: $USD {product.precio}</p>
       <p>Características: {product.caracteristicas}</p>
       <p>Colores disponibles: {product.colores}</p>
-      <button>Agregar al carro de compras</button>
+      <button onClick={addToCart}>Agregar al carro de compras</button>
     </div>
   );
 };
